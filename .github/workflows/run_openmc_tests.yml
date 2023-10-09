@@ -1,6 +1,6 @@
 # This workflow will install CAD_to_OpenMC and OpenMC and run neutronics on some geometries
 
-name: Run OpenMC-based tests
+name: Run OpenMC based tests
 
 on:
   workflow_dispatch:
