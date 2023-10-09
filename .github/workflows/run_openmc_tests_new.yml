@@ -3,7 +3,7 @@
 name: Run OpenMC based tests
 
 on:
-  workflow_dispatch:
+  workflow_dispatch
 
 permissions:
   contents: read
