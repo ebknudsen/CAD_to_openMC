@@ -27,20 +27,27 @@ These two packages solve the same problem as CAD_to_OpenMC, and in fact in many 
 _replace \<name\> with an arbitrary name for your virtual environment_
 1. In the directory where you want your environment to reside do: ```python -m venv <name>```
 2. Activate the environment: ```source <name>/bin/activate```
-3. Build and install moab (if not already installed). The moab team relies on conda for standard installation but are working on a pip-based solution. Once that is done moab would simply be added to the requirements-file instead.
-    1. Clone the moab code-repository: e.g. ```git clone git@bitbucket.org:fathomteam/moab.git```
-    2. Configure and build the code:
-    ```bash
-      mkdir build;
-      cd build; cmake .. -DENABLE_PYMOAB=1 -DENABLE_HDF5=1 -DCMAKE_INSTALL_PREFIX=<name>;
-      make;
-      make install;
-    ```
-    3. Additionally you will need to build the python interface layer.
-    ```bash
-      cd pymoab
-      sudo python setup.py install
-    ```
+3. Install moab (if not already installed). The moab team relies on conda for standard installation but are working on a pip-based solution. Once that is done moab would simply be added to the requirements-file instead.
+    a. Install from source:
+        1. Clone the moab code-repository: e.g. ```git clone git@bitbucket.org:fathomteam/moab.git```
+        2. Configure and build the code:
+        ```bash
+            mkdir build;
+            cd build; cmake .. -DENABLE_PYMOAB=1 -DENABLE_HDF5=1 -DCMAKE_INSTALL_PREFIX=<name>;
+            make;
+            make install;
+        ```
+        3. Additionally you will need to build the python interface layer.
+        ```bash
+            cd pymoab
+            sudo python setup.py install
+        ```
+     b. Use an experimental python wheel:
+        A set of moab-wheels have been built by a member of the community. You may install that by:
+        ```bash
+            python -m pip install https://github.com/shimwell/wheels/raw/refs/heads/main/moab/moab-wheels-ubuntu-latest/moab-5.5.1-cp312-cp312-manylinux_2_28_x86_64.whl
+        ```
+        where you will have to adjust "312" to the version of python you are using, e.g. "311" for python 3.11 etc.
 4. Install the main package: ```pip install CAD_to_OpenMC```. This will pip-install all the required python packages in the virtual environment. This ensures that no additional conflicts are introduced with the system python.
 
 Should you wish to install the development version of this package you may do so by cloning this repository and replace the last command by: ```pip install <path/to/repo>```. This procedure will build and install the python package locally directly from source.
